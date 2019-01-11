@@ -15,8 +15,14 @@ class Sort
 
         for ($i = 0; $i < $size; $i++) {
             for ($j = $i + 1; $j < $size; $j++) {
-                if ($array[$j] < $array[$i]) {
-                    self::swap($array[$i], $array[$j]);
+                if ($byAsc) {
+                    if ($array[$j] < $array[$i]) {
+                        self::swap($array[$i], $array[$j]);
+                    }
+                } else {
+                    if ($array[$j] > $array[$i]) {
+                        self::swap($array[$i], $array[$j]);
+                    }
                 }
             }
         }
