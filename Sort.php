@@ -31,25 +31,58 @@ class Sort
     }
 
     /**
+     * Sort via selection
+     *
+     * @param array $array
+     * @return array
+     */
+    static public function bySelection(array $array): array
+    {
+        $size = count($array);
+
+        for ($i = 0; $i < $size; $i++) {
+
+            for ($j = $i; $j < $size; $j++) {
+                if ($array[$j] < $array[$i]) {
+                    self::swap($array[$j], $array[$i]);
+                }
+            }
+        }
+
+        return $array;
+    }
+
+    /**
      * Swapping $a and $b
      *
      * @param $a
      * @param $b
      */
-    static private function swap(&$a, &$b): void
+    static protected function swap(&$a, &$b): void
     {
         $temp = $a;
         $a = $b;
         $b = $temp;
     }
 
+    /**
+     * Searching of min element in array
+     *
+     * @param array $array
+     * @return mixed element on success or false on failure
+     */
     static private function min(array $array)
     {
-        $min=$array[0];
+        $min = false;
 
-        foreach($array as $item){
-            if($item<$min){
-                $min=$item;
+        if (!empty($array)) {
+
+            $min = $array[0];
+
+            foreach ($array as $item) {
+                if ($item < $min) {
+                    $min = $item;
+                }
             }
         }
 
