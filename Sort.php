@@ -34,18 +34,26 @@ class Sort
      * Sort via selection
      *
      * @param array $array
+     * @param bool $byAsc on true sorting by asc on false - by desc
      * @return array
      */
-    static public function bySelection(array $array): array
+    static public function bySelection(array $array, bool $byAsc = true): array
     {
         $size = count($array);
 
         for ($i = 0; $i < $size; $i++) {
 
             for ($j = $i; $j < $size; $j++) {
-                if ($array[$j] < $array[$i]) {
-                    self::swap($array[$j], $array[$i]);
+                if ($byAsc) {
+                    if ($array[$j] < $array[$i]) {
+                        self::swap($array[$j], $array[$i]);
+                    }
+                } else {
+                    if ($array[$j] > $array[$i]) {
+                        self::swap($array[$j], $array[$i]);
+                    }
                 }
+
             }
         }
 
