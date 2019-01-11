@@ -3,20 +3,20 @@
 class Sort
 {
     /**
+     * Sort via bubble sorting
+     *
      * @param array $array
      * @param bool $byAsc
      * @return array
      */
-    static function byBubble(array $array)
+    static function byBubble(array $array, bool $byAsc = true): array
     {
         $size = count($array);
 
         for ($i = 0; $i < $size; $i++) {
             for ($j = $i + 1; $j < $size; $j++) {
                 if ($array[$j] < $array[$i]) {
-                    $temp = $array[$i];
-                    $array[$i] = $array[$j];
-                    $array[$j] = $temp;
+                    self::swap($array[$i], $array[$j]);
                 }
             }
         }
@@ -24,7 +24,13 @@ class Sort
         return $array;
     }
 
-    private function swap(&$a, &$b): void
+    /**
+     * Swapping $a and $b
+     *
+     * @param $a
+     * @param $b
+     */
+    static private function swap(&$a, &$b): void
     {
         $temp = $a;
         $a = $b;
