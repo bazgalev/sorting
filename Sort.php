@@ -42,4 +42,17 @@ class Sort
         $a = $b;
         $b = $temp;
     }
+
+    static private function min(array $array)
+    {
+        $min=$array[0];
+
+        foreach($array as $item){
+            if($item<$min){
+                $min=$item;
+            }
+        }
+
+        return $min;
+    }
 }
