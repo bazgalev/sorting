@@ -53,8 +53,27 @@ class Sort
                         self::swap($array[$j], $array[$i]);
                     }
                 }
-
             }
+        }
+
+        return $array;
+    }
+
+    /**
+     * Sorting by insertion
+     *
+     * @param array $array
+     * @return array
+     */
+    static public function byInsertion(array $array): array
+    {
+        $size = count($array);
+        for ($i = 1; $i < $size; $i++) {
+            $temp = $array[$i];
+            for ($j = $i - 1; $j >= 0 && $array[$j] > $temp; $j--) {
+                $array[$j + 1] = $array[$j];
+            }
+            $array[$j + 1] = $temp;
         }
 
         return $array;
